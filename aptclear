@@ -1,0 +1,296 @@
+#! /bin/bash
+# Author: Villalba Juan Manuel Pedro
+# Version: 3.0.1
+# Estado: Alpha
+# Destino: resolver problemas or solved problem's APT-GET
+# Date: 05:41pm 14-09-2017
+# Advertencia: Usar con cautela y bajo propia responsabilidad
+# Licence: GPLv2 Free Software Foundation
+# licensing@fsf.org
+
+clear;
+
+echo '
+###############################
+# AUTORIZA!AUTORIZA!AUTORIZA! #
+###############################
+###############################';
+
+sudo -v;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo ' eliminando procesos
+
+#######################################
+# MUERTE DE LOS PROCESOS APT	      #
+# MUERTE DE LOS PROCESOS APT-GET      #
+#######################################
+';
+
+sudo killall -9 apt;
+sudo killall -9 apt-get;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo '
+#######################################
+# Instalando HERRAMIENTAS VARIAS      #
+# Instalando programas UTILES	      #
+#######################################
+';
+
+sudo apt-get install curl zip -y;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo '
+###################################################
+# RESOLUCIÓN DE PROBLEMAS DE ALGUNOS REPOSITORIOS #
+###################################################
+';
+
+sudo apt install apt-transport-https -y;
+
+echo'
+#####################################################
+# Instalacion o comprobación de programas terminada!#
+#####################################################
+';
+
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+
+echo '
+#############################
+#ahora pasaremos al trabajo #
+#############################
+
+Date: $_hoy
+';
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo '
+\e[36m
+
+ Borrar bloqueos
+
+\e[0m';
+
+echo 'logueando como super usuario';
+
+sudo rm -rfv /var/lib/apt/lists/lock;
+sudo rm -rvf /var/cache/apt/archives/lock;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+# Creacion de fichero para resolución de problemas
+echo 1 >> disable_ipv6;
+sudo cp -fv disable_ipv6 /proc/sys/net/ipv6/conf/all/disable_ipv6;
+
+
+echo 'Ya se borraron los bloqueos';
+
+sudo killall -9 apt-get;
+sudo killall -9 apt;
+
+echo 'Se ha eliminado los procesos anteriores';
+
+echo '
+###################################
+# Ahora pasamos a reconfigurar    #
+###################################
+';
+
+sudo dpkg --configure -a;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo '
+######################################
+# iniciando el protocolo de limpieza #
+######################################
+';
+
+sudo apt-get autoclean -y;
+
+sudo apt-get clean -y;
+
+sudo apt-get autoremove --purge -y;
+
+
+echo '
+############################################
+#finalizando protocolo de limpieza clear  ##
+############################################
+';
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo '
+#############################
+# reporte del estado de apt #
+#############################
+';
+
+sudo dpkg -r apt;
+sudo apt-get check;
+sudo apt-get install -f;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+#Preparando directorio de respaldos
+# Copia de seguridad del archivo sources
+echo '
+##########################################
+#     Realizando respaldo sources.list   #
+##########################################
+';
+_hoy=$(date +"%m_%d_%Y_%r_%S") 
+_archivo="sources.list$_hoy" 
+
+echo '
+#################################
+# Iniciando copiado de respaldo #
+#################################
+';
+sudo cp /etc/apt/sources.list "$_archivo" 
+# echo 'Comprimiendo respaldo';
+# zip "$_archivo" "$_archivo".zip
+
+# Realizando purgado general
+echo '
+############################
+# Purgando datos           #
+# Fecha de ejecución       #
+############################
+ ';
+echo Date: $_hoy;
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+echo '
+############################
+#	Purgando datos	   #
+############################
+ ';
+
+
+sudo aptitude purge '~c' -y;
+
+# Fin del programa
+echo '
+#################################
+# Fin del programa  de limpieza #
+#################################
+';
+
+echo '
+##############################
+# APLICANDO LIMPIEZA!	     #
+##############################
+##############################';
+
+clear;
+
+
+echo '
+#########################################################
+#########################################################
+# RESPALDO DE REPOSITORIO APLICADO		 	#
+#########################################################
+';
+clear;
+# Final del script
+echo '
+#########################################################
+# APLICANDA LA LIMPIEZA!	    			#
+# PROGRAMA FINALIZADO		 			#
+# Gracias por usar este programa		 	#
+#							#
+# PROGRAMA #BASH!					#
+# Author: Villalba Juan Manuel Pedro			#
+# Version: 3.0.1					#
+# Estado: Alpha						#
+# Destino: resolver problemas APT-GET			#
+# Date: 05:41pm 14-09-2017				#
+# Advertencia: Usar con cautela y bajo propia respons...#
+# Licence: GPLv2 Free Software Foundation		#
+# licensing@fsf.org					#
+#							#
+#########################################################
+';
+
+echo Date: $_hoy;
+
+ls sources.*;
+
+echo 'Estas son las copias de tu archivo sources';
+
+
+
+
+
+
