@@ -1,0 +1,28 @@
+echo '
+#####################################################
+#   install PHP 5.6 | Debian 9 Squeeze		    #
+#####################################################
+';
+
+echo "deb http://packages.dotdeb.org squeeze all" >> /etc/apt/sources.list.d/dotdeb-debian9.list;
+echo "deb-src http://packages.dotdeb.org squeeze all" >> /etc/apt/sources.list.d/dotdeb-debian9.list;
+echo "deb http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/sources.list.d/dotdeb-debian9.list;
+echo "deb-src http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/sources.list.d/dotdeb-debian9.list;
+
+wget http://www.dotdeb.org/dotdeb.gpg -O- |apt-key add -;
+
+apt-get update;
+
+apt-get install -t wheezy-php56 php5 php5-mysql php5-cli php5-fpm php5-common php5-xmlrpc php5-curl php5-gd php-pear php5-imap php5-mcrypt php5-imagick -y;
+
+apt-get install php5-mysqlnd -y;
+
+service apache2 restart;
+
+clear;
+
+echo '
+#####################################################
+#   instalation PHP 5 | Debian 9 Squeeze Finished  #
+#####################################################
+';
