@@ -184,3 +184,5 @@ systemctl enable php5.3-fpm.service;
 systemctl daemon-reload;
 systemctl restart php5.3-fpm.service;
 
+# Referencia del codigo
+# sitio de referencia https://www.howtoforge.com/community/threads/the-perfect-server-debian-9-stretch-add-php-5-3.77549/#post-366596
