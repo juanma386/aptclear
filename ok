@@ -1,0 +1,19 @@
+echo 'AUTORIZA EL PROTOCOLO BASH';
+cd ~/public_html/
+sudo -v;
+echo 'BASH OPERATIVO..................[ OK ]';
+echo 'Restaurando Propiedades del sistema [ OK ]';
+sudo chown -R displaycenter:displaycenter .;
+echo 'Aplicando comandos de restauraciones';
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 754 {} \;
+find var/ -type f -exec chmod 644 {} \;
+find media/ -type f -exec chmod 664 {} \;
+echo 'Aplicando comandos de seguridad [ OK ]';
+find var/ -type d -exec chmod 700 {} \;
+find media/ -type d -exec chmod 750 {} \;
+echo 'Aplicando medidas anti-hacking basicas';
+chmod 700 includes
+chmod 600 includes/config.php
+echo 'Protocolo restaurado totalmente [ OK ]';
+n98 sys:maintenance --off
