@@ -7,5 +7,5 @@
  apt-get  -y --purge remove bind*
  aptitude remove -y postfix* --purge-unused
  aptitude remove -y postfix --purge-unused
- aptitude remove -y spamassissin --purge-unused
+ aptitude remove -y spamassassin --purge-unused
  
